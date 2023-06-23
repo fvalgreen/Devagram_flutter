@@ -1,3 +1,4 @@
+import 'package:devagram_flutter/Constant/Colors.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget{
@@ -14,11 +15,75 @@ class _LoginViewState extends State<LoginView>{
       body: Container(
         height: size.height,
         width: size.width,
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Login')
+            Image.asset("assets/images/logo.png"),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 0, left: 32, top: 56, right: 32),
+              child:
+                 TextField(
+                  style: TextStyle(color: primaryColor),
+                  decoration: InputDecoration(
+                    icon: ImageIcon(AssetImage("assets/images/envelope.png"), color: primaryColor),
+                    hintText: 'Email'
+                  ),
+                ),
+            ),const Padding(
+              padding: EdgeInsets.only(bottom: 0, left: 32, top: 0, right: 32),
+              child:
+                 TextField(
+                   obscureText: true,
+                   style: TextStyle(color: primaryColor),
+                   decoration: InputDecoration(
+                       icon: ImageIcon(AssetImage("assets/images/chave.png"), color: primaryColor),
+                       hintText: 'Senha'
+                  ),
+                ),
+            ),
+            Padding(padding: const EdgeInsets.only(bottom: 0, left: 32, top: 40, right: 32),
+              child:
+              TextButton(
+                  onPressed: (){},
+                  style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: primaryColor,
+                      minimumSize: const Size(290, 48)
+                  ),
+                  child:
+                  Text('Login'))
+            ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 0, left: 0, top: 24, right: 0),
+              child:
+                Text(
+                  'Não possui conta?',
+                  style:
+                    TextStyle(
+                        color: grayColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400
+                    ),
+                ),
+            ),
+            Padding(padding: const EdgeInsets.only(bottom: 0, left: 0, top: 0, right: 0),
+                child:
+                  TextButton(
+                    onPressed: (){},
+                    child:
+                    const Text(
+                      'Faça seu cadastro agora',
+                      style:
+                      TextStyle(
+                          color: primaryColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          decoration: TextDecoration.underline
+                      ),
+                    ),
+                  ),
+            ),
           ],
         ),
       ),
