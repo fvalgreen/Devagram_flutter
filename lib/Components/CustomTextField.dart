@@ -8,11 +8,13 @@ class CustomTextField extends StatelessWidget {
     required this.textHint,
     required this.iconPath,
     this.obscureText = false,
+    this.textController
   });
 
   final String textHint;
   final String iconPath;
   final obscureText;
+  final textController;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class CustomTextField extends StatelessWidget {
         decoration: const BoxDecoration(
             border: Border(bottom: BorderSide(width: 1, color: primaryColor))),
         child: TextField(
+          controller: textController,
           obscureText: obscureText,
           style: const TextStyle(color: primaryColor),
           decoration: InputDecoration(
