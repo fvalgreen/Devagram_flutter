@@ -1,15 +1,15 @@
 import 'package:devagram_flutter/Components/CustomTextField.dart';
 import 'package:devagram_flutter/Constant/Colors.dart';
 import 'package:devagram_flutter/Utils/ScreenConverter.dart';
-import 'package:devagram_flutter/Views/RegistrarView.dart';
+import 'package:devagram_flutter/Views/LoginView.dart';
 import 'package:flutter/material.dart';
 
-class LoginView extends StatefulWidget {
+class RegistrarView extends StatefulWidget {
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegistrarView> createState() => _RegistrarViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegistrarViewState extends State<RegistrarView> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,20 +23,35 @@ class _LoginViewState extends State<LoginView> {
           children: [
             Padding(
                 padding: EdgeInsets.only(
-                    bottom: convertHeigth(48, size.height),
+                    bottom: convertHeigth(30, size.height),
                     left: 0,
-                    top: convertHeigth(133, size.height),
+                    top: convertHeigth(59, size.height),
                     right: 0),
-                child: Image.asset(
-                  "assets/images/logo.png",
-                  height: convertHeigth(76, size.height),
-                  width: convertWidth(123, size.width),
-                )),
+                child: Stack(children: [
+                  Image.asset(
+                    "assets/images/avatar.png",
+                    height: convertHeigth(120, size.height),
+                    width: convertWidth(120, size.width),
+                  ),
+                  Positioned(
+                      top: convertHeigth(75, size.height),
+                      left: convertWidth(75, size.width),
+                      child: Image.asset('assets/images/camera.png'))
+                ])),
             Padding(
               padding: EdgeInsets.only(
                   bottom: 0,
                   left: convertWidth(32, size.width),
                   top: 0,
+                  right: convertWidth(32, size.width)),
+              child: const CustomTextField(
+                  textHint: 'Nome', iconPath: 'assets/images/usuarioAtivo.png'),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  bottom: 0,
+                  left: convertWidth(32, size.width),
+                  top: convertHeigth(10, size.height),
                   right: convertWidth(32, size.width)),
               child: const CustomTextField(
                   textHint: 'Email', iconPath: 'assets/images/envelope.png'),
@@ -49,6 +64,18 @@ class _LoginViewState extends State<LoginView> {
                   right: convertWidth(32, size.width)),
               child: const CustomTextField(
                 textHint: 'Senha',
+                iconPath: 'assets/images/chave.png',
+                obscureText: true,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  bottom: 0,
+                  left: convertWidth(32, size.width),
+                  top: convertHeigth(10, size.height),
+                  right: convertWidth(32, size.width)),
+              child: const CustomTextField(
+                textHint: 'Confirmar senha',
                 iconPath: 'assets/images/chave.png',
                 obscureText: true,
               ),
@@ -67,7 +94,7 @@ class _LoginViewState extends State<LoginView> {
                       minimumSize: Size(convertWidth(290, size.width),
                           convertHeigth(48, size.height))),
                   child: Text(
-                    'Login',
+                    'Cadastrar',
                     style: TextStyle(
                         fontSize: convertHeigth(16, size.height),
                         fontWeight: FontWeight.w600),
@@ -77,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
               padding:
                   const EdgeInsets.only(bottom: 0, left: 0, top: 0, right: 0),
               child: Text(
-                'Não possui conta?',
+                'Já possui conta?',
                 style: TextStyle(
                     color: grayColor,
                     fontSize: convertHeigth(12, size.height),
@@ -90,10 +117,10 @@ class _LoginViewState extends State<LoginView> {
               child: TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegistrarView()));
+                      MaterialPageRoute(builder: (context) => LoginView()));
                 },
                 child: Text(
-                  'Faça seu cadastro agora',
+                  'Faça seu login agora',
                   style: TextStyle(
                       color: primaryColor,
                       fontSize: convertHeigth(12, size.height),
